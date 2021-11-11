@@ -1606,12 +1606,12 @@
   resolved "https://registry.yarnpkg.com/@rtsao/csstype/-/csstype-2.6.5-forked.0.tgz#b5b4e2a07ad83a91874ebf5fabdb73dc8c1632f6"
   integrity sha512-0HwnY8uPWcCloTgdbbaJG3MbDUfNf6yKWZfCKxFv9yj2Sbp4mSKaIjC7Cr/5L4hMxvrrk85CU3wlAg7EtBBJ1Q==
 
-"@scenify/sdk@0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@scenify/sdk/-/sdk-0.1.17.tgz#245cbf7b7c564ecfdbf50e58db3aa7eeb26c6a36"
-  integrity sha512-dV5reLq2JILJ0mI47QsVe2czw7nE969P6tB7aEcDh5L69AFRSJ2wssB0ADLfkc3lp1wByeCj5AFhe/aVCfYuIg==
+"@scenify/sdk@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@scenify/sdk/-/sdk-0.2.0.tgz#fc13d0106dde41474dc04f7d64d62d9c45ee4203"
+  integrity sha512-Jxes5As7vnsPeT967QCAGxpZEQ+uwAPT4uR0sb7uA8XSK2Ac4l1wmCg1Cs7pPlreuML+ri3AxcnbzRCo5WDixg==
   dependencies:
-    "@types/fabric" "^4.5.3"
+    "@types/fabric" "^4.5.4"
     "@types/lodash" "^4.14.175"
     fabric "^4.6.0"
     lodash "^4.17.21"
@@ -1852,10 +1852,15 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
-"@types/fabric@^4.5.2", "@types/fabric@^4.5.3":
+"@types/fabric@^4.5.2":
   version "4.5.3"
   resolved "https://registry.yarnpkg.com/@types/fabric/-/fabric-4.5.3.tgz#f4f2e1168d086a7ffe12e5cea4193d0cd6a526f7"
   integrity sha512-DCneYSkuVdGYpFbDQ2j5zT7DDdAiOlAPfSjS3PsVWHFt6f/DapCdV0ansPq3Ai5oe+j6BgFhdkh+DWne1yQMdw==
+
+"@types/fabric@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@types/fabric/-/fabric-4.5.4.tgz#2da26e492c5a369383c920224d66646433a6ea63"
+  integrity sha512-hu+VbP50FAtxy9e+ZBx+xwKclREtxg1hlFV3ID+YArLA9sfUG3QOGXT/862z0cq/DRWfyWOj8nPh5wRspaQUkg==
 
 "@types/glob@^7.1.1":
   version "7.1.4"
