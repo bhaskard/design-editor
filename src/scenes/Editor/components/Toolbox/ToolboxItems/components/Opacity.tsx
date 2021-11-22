@@ -2,24 +2,23 @@ import Icons from '../../../icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Slider } from 'baseui/slider'
-import { useHandlers, useActiveObject } from '@scenify/sdk'
+import { useActiveObject, useEditor } from '@scenify/sdk'
 import { useEffect, useState } from 'react'
 
 function Opacity() {
   const [value, setValue] = useState([1])
   const activeObject = useActiveObject()
-  const handlers = useHandlers()
-
+  const editor = useEditor()
   useEffect(() => {
     updateOptions(activeObject)
   }, [activeObject])
 
   useEffect(() => {
-    handlers.canvasHandler.canvas.on('history:changed', () => {
+    editor.on('history:changed', () => {
       updateOptions(activeObject)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handlers])
+  }, [editor])
 
   const updateOptions = (object: fabric.IObjectOptions) => {
     const updatedValue = [object.opacity * 100]
@@ -28,7 +27,7 @@ function Opacity() {
 
   const updateOpacity = (value: number[]) => {
     const opacityValue = value[0] / 100
-    handlers.objectsHandler.updateActive({ opacity: opacityValue })
+    editor.update({ opacity: opacityValue })
   }
 
   return (

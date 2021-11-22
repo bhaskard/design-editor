@@ -4,7 +4,7 @@ import { ChevronDown } from 'baseui/icon'
 import useAppContext from '@/hooks/useAppContext'
 import { SubMenuType } from '@/constants/editor'
 import { useEffect, useState } from 'react'
-import { useActiveObject, useHandlers } from '@scenify/sdk'
+import { useActiveObject, useEditor } from '@scenify/sdk'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { StatefulMenu } from 'baseui/menu'
 import Delete from './components/Delete'
@@ -53,17 +53,17 @@ function Text() {
   const { setActiveSubMenu } = useAppContext()
   const activeObject = useActiveObject<fabric.TextOptions>()
   const [options, setOptions] = useState<TextOptions>(defaultOptions)
-  const handlers = useHandlers()
+  const editor = useEditor()
   useEffect(() => {
     updateOptions(activeObject)
   }, [activeObject])
 
   useEffect(() => {
-    handlers.canvasHandler.canvas.on('history:changed', () => {
+    editor.on('history:changed', () => {
       updateOptions(activeObject)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handlers])
+  }, [editor])
 
   const updateOptions = (object: fabric.TextOptions) => {
     const textOptions = ({
@@ -85,11 +85,11 @@ function Text() {
 
   const toggleBold = () => {
     const isBold = checkBold(options.fontWeight)
-    handlers.objectsHandler.updateActive({ fontWeight: isBold ? 400 : 700 })
+    editor.update({ fontWeight: isBold ? 400 : 700 })
   }
 
   const toggleUnderline = () => {
-    handlers.objectsHandler.updateActive({ underline: activeObject.underline ? false : true })
+    editor.update({ underline: activeObject.underline ? false : true })
   }
 
   const checkIsItalic = (value: string) => {
@@ -99,7 +99,7 @@ function Text() {
 
   const toggleItalic = () => {
     const isItalic = checkIsItalic(activeObject.fontStyle)
-    handlers.objectsHandler.updateActive({ fontStyle: isItalic ? 'normal' : 'italic' })
+    editor.update({ fontStyle: isItalic ? 'normal' : 'italic' })
   }
 
   const getNextTextAlign = (current: string) => {
@@ -112,7 +112,7 @@ function Text() {
   const toggleTextAlign = () => {
     const currentValue = activeObject.textAlign
     const nextTextAlign = getNextTextAlign(currentValue)
-    handlers.objectsHandler.updateActive({ textAlign: nextTextAlign })
+    editor.update({ textAlign: nextTextAlign })
   }
 
   const getTextAlignIcon = () => {
@@ -129,7 +129,7 @@ function Text() {
   }
 
   const updateFontSize = (value: number) => {
-    handlers.objectsHandler.updateActive({ fontSize: value })
+    editor.update({ fontSize: value })
   }
 
   const TextAlignIcon = getTextAlignIcon()

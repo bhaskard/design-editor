@@ -1606,10 +1606,10 @@
   resolved "https://registry.yarnpkg.com/@rtsao/csstype/-/csstype-2.6.5-forked.0.tgz#b5b4e2a07ad83a91874ebf5fabdb73dc8c1632f6"
   integrity sha512-0HwnY8uPWcCloTgdbbaJG3MbDUfNf6yKWZfCKxFv9yj2Sbp4mSKaIjC7Cr/5L4hMxvrrk85CU3wlAg7EtBBJ1Q==
 
-"@scenify/sdk@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@scenify/sdk/-/sdk-0.2.0.tgz#fc13d0106dde41474dc04f7d64d62d9c45ee4203"
-  integrity sha512-Jxes5As7vnsPeT967QCAGxpZEQ+uwAPT4uR0sb7uA8XSK2Ac4l1wmCg1Cs7pPlreuML+ri3AxcnbzRCo5WDixg==
+"@scenify/sdk@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@scenify/sdk/-/sdk-0.2.13.tgz#1e9bfc3b54356c1667879452ccf00692b5c475c4"
+  integrity sha512-Jd31CJpzBpc8QUWVuDyh1jvVGPFxhaS5CduY6hdwAYTxGGJlhC1mrCJ5K3J8VYhAsS+fbUSTbax6SvB8KCEJ3Q==
   dependencies:
     "@types/fabric" "^4.5.4"
     "@types/lodash" "^4.14.175"

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { getPixabayImages, PixabayImage } from '@/services/pixabay'
 import { useDebounce } from 'use-debounce'
 
@@ -10,8 +10,7 @@ function Images() {
   const [search, setSearch] = useState('')
   const [images, setImages] = useState<PixabayImage[]>([])
   const [value] = useDebounce(search, 1000)
-
-  const handlers = useHandlers()
+  const editor = useEditor()
   useEffect(() => {
     getPixabayImages('people')
       .then(data => setImages(data))
@@ -31,7 +30,7 @@ function Images() {
       type: 'StaticImage',
       metadata: { src: url },
     }
-    handlers.objectsHandler.create(options)
+    editor.add(options)
   }
 
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { HexColorPicker } from 'react-colorful'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Plus } from 'baseui/icon'
@@ -21,12 +21,12 @@ const colors = [
   '#303952',
 ]
 function Color() {
+  const editor = useEditor()
   const [color, setColor] = useState('#b32aa9')
   const [value, setValue] = useState('')
-  const handlers = useHandlers()
 
   const updateObjectFill = throttle((color: string) => {
-    handlers.objectsHandler.updateActive({ fill: color })
+    editor.update({ fill: color })
     setColor(color)
   }, 100)
 
@@ -116,7 +116,7 @@ function Color() {
           >
             {colors.map(color => (
               <div
-                onClick={() => handlers.objectsHandler.updateActive({ fill: color })}
+                onClick={() => editor.update({ fill: color })}
                 key={color}
                 style={{ height: '42px', background: color, borderRadius: '4px', cursor: 'pointer' }}
               ></div>

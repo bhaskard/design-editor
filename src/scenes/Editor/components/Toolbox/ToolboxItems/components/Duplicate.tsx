@@ -1,13 +1,13 @@
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import Icons from '../../../icons'
 
 function Duplicate() {
-  const handlers = useHandlers()
+  const editor = useEditor()
   return (
     <Button
       onClick={() => {
-        handlers.objectsHandler.clone()
+        editor.clone()
       }}
       size={SIZE.default}
       kind={KIND.tertiary}

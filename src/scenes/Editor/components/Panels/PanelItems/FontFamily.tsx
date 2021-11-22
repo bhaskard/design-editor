@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { editorFonts } from '@/constants/editor'
 import { styled } from 'baseui'
 function FontFamily() {
   const [value, setValue] = useState('')
-  const handlers = useHandlers()
+  const editor = useEditor()
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <div style={{ padding: '2rem 2rem' }}>
@@ -26,7 +26,7 @@ function FontFamily() {
               <FontItem
                 key={font.name}
                 style={{ fontFamily: font.name }}
-                onClick={() => handlers.objectsHandler.updateActive({ fontFamily: font.name })}
+                onClick={() => editor.update({ fontFamily: font.name })}
               >
                 <img src={font.preview || 'https://via.placeholder.com/150'} alt="preview" />
               </FontItem>

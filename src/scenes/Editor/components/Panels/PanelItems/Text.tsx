@@ -1,4 +1,4 @@
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
@@ -6,8 +6,7 @@ import { useState } from 'react'
 
 function Panel() {
   const [value, setValue] = useState('')
-
-  const handlers = useHandlers()
+  const editor = useEditor()
 
   const addHeading = () => {
     const options = {
@@ -21,7 +20,7 @@ function Panel() {
         value: 'Add a heading',
       },
     }
-    handlers.objectsHandler.create(options)
+    editor.add(options)
   }
 
   const addSubheading = () => {
@@ -36,7 +35,7 @@ function Panel() {
         textAlign: 'center',
       },
     }
-    handlers.objectsHandler.create(options)
+    editor.add(options)
   }
 
   const addTextBody = () => {
@@ -51,7 +50,7 @@ function Panel() {
         textAlign: 'center',
       },
     }
-    handlers.objectsHandler.create(options)
+    editor.add(options)
   }
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>

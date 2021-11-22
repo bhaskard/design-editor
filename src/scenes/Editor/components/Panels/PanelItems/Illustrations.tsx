@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { useDebounce } from 'use-debounce'
 import { getImage, getImages } from '@/services/iconscout'
 
@@ -10,8 +10,8 @@ function Illustrations() {
   const [search, setSearch] = useState('')
   const [objects, setObjects] = useState<any[]>([])
   const [value] = useDebounce(search, 1000)
+  const editor = useEditor()
 
-  const handlers = useHandlers()
   useEffect(() => {
     getImages('people')
       .then((data: any) => setObjects(data))
@@ -32,7 +32,7 @@ function Illustrations() {
           type: 'StaticVector',
           metadata: { src: url },
         }
-        handlers.objectsHandler.create(options)
+        editor.add(options)
       })
       .catch(console.log)
   }

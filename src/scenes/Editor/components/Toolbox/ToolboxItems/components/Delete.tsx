@@ -1,16 +1,11 @@
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import Icons from '../../../icons'
 
 function Delete() {
-  const handlers = useHandlers()
+  const editor = useEditor()
   return (
-    <Button
-      onClick={() => handlers.objectsHandler.removeActive()}
-      size={SIZE.default}
-      kind={KIND.tertiary}
-      shape={SHAPE.square}
-    >
+    <Button onClick={() => editor.delete()} size={SIZE.default} kind={KIND.tertiary} shape={SHAPE.square}>
       <Icons.Delete size={24} />
     </Button>
   )

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@scenify/sdk": "^0.2.0",
+    "@scenify/sdk": "^0.2.13",
     "@types/css-font-loading-module": "^0.0.6",
     "@types/i18next": "^13.0.0",
     "@types/react-router-dom": "^5.1.8",

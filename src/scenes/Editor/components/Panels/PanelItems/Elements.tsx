@@ -3,12 +3,12 @@ import Icons from '@components/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { useState } from 'react'
 import useAppContext from '@/hooks/useAppContext'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 
 function Panel() {
+  const editor = useEditor()
   const [value, setValue] = useState('')
   const { shapes } = useAppContext()
-  const handlers = useHandlers()
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <div style={{ padding: '2rem 2rem' }}>
@@ -36,7 +36,7 @@ function Panel() {
                   display: 'flex',
                   justifyContent: 'center',
                 }}
-                onClick={() => handlers.objectsHandler.create(shape)}
+                onClick={() => editor.add(shape)}
               >
                 <img
                   width="80px"

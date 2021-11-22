@@ -1,10 +1,10 @@
 import Icons from '../../../icons'
 import { Button, KIND, SIZE } from 'baseui/button'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 
 function Position() {
-  const handlers = useHandlers()
+  const editor = useEditor()
   return (
     <StatefulPopover
       focusLock
@@ -25,13 +25,13 @@ function Position() {
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <PositionItem
-                onClick={handlers.objectsHandler.bringForward}
+                onClick={editor.bringForward}
                 icon="Forward"
                 label="Forward"
                 shortcut="Ctrl + J"
               />
               <PositionItem
-                onClick={handlers.objectsHandler.bringToFront}
+                onClick={editor.bringToFront}
                 icon="ToFront"
                 label="ToFront"
                 shortcut="Ctrl + Alt + J"
@@ -39,13 +39,13 @@ function Position() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <PositionItem
-                onClick={handlers.objectsHandler.sendBackwards}
+                onClick={editor.sendBackwards}
                 icon="Backward"
                 label="Backward"
                 shortcut="Ctrl + ["
               />
               <PositionItem
-                onClick={handlers.objectsHandler.sendToBack}
+                onClick={editor.sendToBack}
                 icon="ToBack"
                 label="ToBack"
                 shortcut="Ctrl + Alt + ["

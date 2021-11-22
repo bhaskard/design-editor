@@ -3,7 +3,7 @@ import { styled } from 'baseui'
 import { Plus, CheckIndeterminate } from 'baseui/icon'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Scrollbars } from 'react-custom-scrollbars'
-import { useEditorContext, useHandlers } from '@scenify/sdk'
+import { useEditor, useEditorContext } from '@scenify/sdk'
 
 const Container = styled('div', props => ({
   backgroundColor: '#f6f7f9',
@@ -27,12 +27,12 @@ const ZoomItemContainer = styled('div', () => ({
   },
 }))
 function Footer() {
-  const handlers = useHandlers()
+  const editor = useEditor()
   const { zoomRatio } = useEditorContext()
   return (
     <Container>
       <div style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(0,0,0,0.1)' }}>
-        <Button onClick={() => handlers.zoomHandler.zoomOut()} size={SIZE.compact} kind={KIND.tertiary}>
+        <Button onClick={() => editor.zoomOut()} size={SIZE.compact} kind={KIND.tertiary}>
           <CheckIndeterminate size={20} />
         </Button>
         <StatefulPopover
@@ -51,7 +51,7 @@ function Footer() {
               <Scrollbars>
                 <ZoomItemContainer
                   onClick={() => {
-                    handlers.zoomHandler.zoomToFit()
+                    editor.zoomToFit()
                     close()
                   }}
                 >
@@ -60,7 +60,7 @@ function Footer() {
                 {zoomValues.map(zv => (
                   <ZoomItemContainer
                     onClick={() => {
-                      handlers.zoomHandler.zoomToRatio(zv)
+                      editor.zoomToRatio(zv)
                       close()
                     }}
                     key={zv}
@@ -93,7 +93,7 @@ function Footer() {
             {Math.round(zoomRatio * 100) + '%'}
           </Button>
         </StatefulPopover>
-        <Button onClick={() => handlers.zoomHandler.zoomIn()} size={SIZE.compact} kind={KIND.tertiary}>
+        <Button onClick={() => editor.zoomIn()} size={SIZE.compact} kind={KIND.tertiary}>
           <Plus size={20} />
         </Button>
       </div>

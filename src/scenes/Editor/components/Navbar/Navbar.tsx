@@ -2,7 +2,7 @@ import { styled, ThemeProvider, DarkTheme } from 'baseui'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import Icons from '../icons'
 import Logo from '@components/icons/Logo'
-import { useHandlers } from '@scenify/sdk'
+import { useEditor } from '@scenify/sdk'
 import Resize from './components/Resize'
 
 const Container = styled('div', props => ({
@@ -21,11 +21,10 @@ const LogoContainer = styled('div', props => ({
 }))
 
 function NavbarEditor() {
-  const handlers = useHandlers()
-
+  const editor = useEditor()
   const downloadImage = async () => {
-    if (handlers) {
-      const data = await handlers.designHandler.toDataURL({})
+    if (editor) {
+      const data = await editor.toPNG({})
       if (data) {
         const a = document.createElement('a')
         a.href = data
@@ -46,7 +45,7 @@ function NavbarEditor() {
           <div>
             <Button
               onClick={() => {
-                handlers.transactionHandler.undo()
+                editor.undo()
               }}
               size={SIZE.default}
               kind={KIND.tertiary}
@@ -56,7 +55,7 @@ function NavbarEditor() {
             </Button>
             <Button
               onClick={() => {
-                handlers.transactionHandler.redo()
+                editor.redo()
               }}
               size={SIZE.default}
               kind={KIND.tertiary}
