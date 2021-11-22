@@ -60,7 +60,7 @@ REACT_APP_PIXABAY_KEY="your-key"
 ## Join us on Discord
 
 <p>
-    <a href="https://discord.com/invite/WduAHMce">
+    <a href="https://discord.gg/HqyXEhkXNZ">
         <img src="https://discordapp.com/api/guilds/898955692491309126/widget.png?style=banner2" alt="Discord Banner 2"/>
     </a>
 </p>
