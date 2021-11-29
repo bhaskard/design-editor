@@ -1,4 +1,4 @@
-import Icons from '../../icons'
+import Icons from '../../Icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import { ChevronDown } from 'baseui/icon'
 import useAppContext from '@/hooks/useAppContext'
@@ -7,11 +7,7 @@ import { useEffect, useState } from 'react'
 import { useActiveObject, useEditor } from '@scenify/sdk'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { StatefulMenu } from 'baseui/menu'
-import Delete from './components/Delete'
-import Duplicate from './components/Duplicate'
-import Opacity from './components/Opacity'
-import Position from './components/Position'
-
+import Common from './components/Common'
 interface TextOptions {
   fontFamily: string
   fontSize: number
@@ -66,7 +62,7 @@ function Text() {
   }, [editor])
 
   const updateOptions = (object: fabric.TextOptions) => {
-    const textOptions = ({
+    const textOptions = {
       fontFamily: object.fontFamily,
       fontSize: object.fontSize,
       fontWeight: object.fontWeight,
@@ -75,7 +71,7 @@ function Text() {
       textAligh: object.textAlign,
       underline: object.underline,
       fill: object.fill,
-    } as unknown) as TextOptions
+    } as unknown as TextOptions
     setOptions(textOptions)
   }
 
@@ -263,12 +259,7 @@ function Text() {
           </Button>
         </div>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Position />
-        <Opacity />
-        <Duplicate />
-        <Delete />
-      </div>
+      <Common />
     </div>
   )
 }

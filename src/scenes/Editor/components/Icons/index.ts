@@ -23,6 +23,10 @@ import ToBack from './ToBack'
 import Backward from './Backward'
 import Undo from './Undo'
 import Redo from './Redo'
+import ChevronLeft from './ChevronLeft'
+import Spacing from './Spacing'
+import CopyStyle from './CopyStyle'
+
 class Icons {
   static Background = Background
   static Elements = Elements
@@ -49,6 +53,9 @@ class Icons {
   static Backward = Backward
   static Undo = Undo
   static Redo = Redo
+  static ChevronLeft = ChevronLeft
+  static Spacing = Spacing
+  static CopyStyle = CopyStyle
 }
 
 export default Icons

@@ -1,4 +1,4 @@
-import Icons from '../../icons'
+import Icons from '../../Icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import useAppContext from '@/hooks/useAppContext'
 import { PanelType } from '@/constants/app-options'

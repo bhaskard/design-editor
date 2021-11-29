@@ -1,4 +1,4 @@
-import Icons from '../../../icons'
+import Icons from '../../../Icons'
 import { Button, KIND, SIZE } from 'baseui/button'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { useEditor } from '@scenify/sdk'

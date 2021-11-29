@@ -1,4 +1,4 @@
-import Icons from '../../../icons'
+import Icons from '../../../Icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Slider } from 'baseui/slider'
@@ -14,9 +14,13 @@ function Opacity() {
   }, [activeObject])
 
   useEffect(() => {
-    editor.on('history:changed', () => {
+    const handleChanges = () => {
       updateOptions(activeObject)
-    })
+    }
+    editor.on('history:changed', handleChanges)
+    return () => {
+      editor.off('history:changed', handleChanges)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor])
 

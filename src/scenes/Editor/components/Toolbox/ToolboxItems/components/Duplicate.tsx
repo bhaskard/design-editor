@@ -1,6 +1,6 @@
 import { useEditor } from '@scenify/sdk'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
-import Icons from '../../../icons'
+import Icons from '../../../Icons'
 
 function Duplicate() {
   const editor = useEditor()

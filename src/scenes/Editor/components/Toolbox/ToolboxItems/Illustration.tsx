@@ -1,11 +1,8 @@
-import Icons from '../../icons'
+import Icons from '../../Icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import useAppContext from '@/hooks/useAppContext'
 import { SubMenuType } from '@/constants/editor'
-import Delete from './components/Delete'
-import Duplicate from './components/Duplicate'
-import Opacity from './components/Opacity'
-import Position from './components/Position'
+import Common from './components/Common'
 
 function Illustration() {
   const { setActiveSubMenu } = useAppContext()
@@ -28,12 +25,7 @@ function Illustration() {
       >
         <Icons.FillColor size={24} color="#000000" />
       </Button>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Position />
-        <Opacity />
-        <Duplicate />
-        <Delete />
-      </div>
+      <Common />
     </div>
   )
 }

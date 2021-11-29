@@ -1,9 +1,9 @@
 import { styled, ThemeProvider, DarkTheme } from 'baseui'
-import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
-import Icons from '../icons'
+import { Button, KIND } from 'baseui/button'
 import Logo from '@components/icons/Logo'
 import { useEditor } from '@scenify/sdk'
 import Resize from './components/Resize'
+import History from './components/History'
 
 const Container = styled('div', props => ({
   height: '70px',
@@ -42,28 +42,7 @@ function NavbarEditor() {
             <Logo size={40} />
           </LogoContainer>
           <Resize />
-          <div>
-            <Button
-              onClick={() => {
-                editor.undo()
-              }}
-              size={SIZE.default}
-              kind={KIND.tertiary}
-              shape={SHAPE.square}
-            >
-              <Icons.Undo size={24} />
-            </Button>
-            <Button
-              onClick={() => {
-                editor.redo()
-              }}
-              size={SIZE.default}
-              kind={KIND.tertiary}
-              shape={SHAPE.square}
-            >
-              <Icons.Redo size={24} />
-            </Button>
-          </div>
+          <History />
         </div>
 
         <div style={{ display: 'flex', gap: '1rem' }}>
