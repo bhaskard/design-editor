@@ -7,7 +7,7 @@ Design editor using React and FabricJS. Create images in React, draw diagrams an
 ## Features
 
 - [x] Add, remove, resize, reorder, clone, copy/paste objects
-- [ ] Group/ungroup objects
+- [x] Group/ungroup objects
 - [ ] Object crop support
 - [x] Zoom/pan canvas
 - [x] Save and Download design
