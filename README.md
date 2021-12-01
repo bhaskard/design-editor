@@ -71,7 +71,7 @@ Feel free to contribute by opening issues with any questions, bug reports or fea
 
 ## Author
 
-Created and maintained by Dany Boza ([@xorbmoon](https://twitter.com/xorbmoon)).
+Created and maintained by Dany Boza ([db@backium.co](https://twitter.com/xorbmoon)).
 
 ## License
 
