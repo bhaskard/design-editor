@@ -2,13 +2,14 @@
 
 Design editor using React and FabricJS. Create images in React, draw diagrams and arrange compositions using the image editor and save the result to one of several export formats, provides functionality similar to canva.com.
 
-![Editor Preview](https://i.ibb.co/12S7x7n/Screenshot-select-area-20210528170059.png)
+![Editor Preview](https://i.ibb.co/thV42bJ/1638452511504.png)
 
 ## Features
 
 - [x] Add, remove, resize, reorder, clone, copy/paste objects
 - [x] Group/ungroup objects
-- [ ] Object crop support
+- [x] Lock/unlock objects
+- [x] Object crop support
 - [x] Zoom/pan canvas
 - [x] Save and Download design
 - [x] Context menu
@@ -16,8 +17,6 @@ Design editor using React and FabricJS. Create images in React, draw diagrams an
 - [x] Interation modes: selection, ctrl + drag grab
 - [x] Undo/Redo support
 - [x] Guidelines support
-- [ ] Presentation mode
-- [ ] Share design
 - [x] Server side image rendering
 
 ## How to start
