@@ -34,11 +34,11 @@ export default function Resize() {
     setValue(value)
     const [frame] = value
 
-    editor.frame.update(frame.size)
+    editor.frame.setSize(frame.size)
   }
   const applyCustomSize = () => {
     if (customSize.width && customSize.height) {
-      editor.frame.update(customSize)
+      editor.frame.setSize(customSize)
     }
   }
   useEffect(() => {
