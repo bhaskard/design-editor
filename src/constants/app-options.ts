@@ -12,6 +12,10 @@ export const panelListItems = [
     name: 'Images',
   },
   {
+    id: 'uploads',
+    name: 'Uploads',
+  },
+  {
     id: 'text',
     name: 'Text',
   },
@@ -19,9 +23,13 @@ export const panelListItems = [
     id: 'illustrations',
     name: 'Illustrations',
   },
+  // {
+  //   id: 'background',
+  //   name: 'Background',
+  // },
   {
-    id: 'background',
-    name: 'Background',
+    id: 'pixabay',
+    name: 'Pixabay',
   },
 ]
 

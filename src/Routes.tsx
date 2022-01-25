@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Editor from '@/scenes/Editor'
+import Editor from '@scenes/Editor'
+import Dashboard from '@scenes/Dashboard'
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/:id" component={Editor} />
-        <Route path="/" component={Editor} />
+        <Route path="/design/:id/edit" component={Editor} />
+        <Route path="/" component={Dashboard} />
       </Switch>
     </Router>
   )

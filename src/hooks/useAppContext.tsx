@@ -13,6 +13,10 @@ function useAppContext() {
     setShapes,
     activeSubMenu,
     setActiveSubMenu,
+    uploads,
+    setUploads,
+    currentTemplate,
+    setCurrentTemplate,
   } = useContext(AppContext)
   return {
     isMobile,
@@ -25,6 +29,10 @@ function useAppContext() {
     setShapes,
     activeSubMenu,
     setActiveSubMenu,
+    uploads,
+    setUploads,
+    currentTemplate,
+    setCurrentTemplate,
   }
 }
 

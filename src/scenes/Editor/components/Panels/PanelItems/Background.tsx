@@ -21,11 +21,11 @@ const colors = [
   '#303952',
 ]
 function Background() {
-  const editor = useEditor()
   const [color, setColor] = useState('#b32aa9')
   const [value, setValue] = useState('')
-
+  const editor = useEditor()
   const updateBackgrounColor = throttle((color: string) => {
+    // handlers.frameHandler.setBackgroundColor(color)
     editor.background.setBackgroundColor(color)
     setColor(color)
   }, 100)

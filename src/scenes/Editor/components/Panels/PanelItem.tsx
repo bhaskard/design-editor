@@ -1,3 +1,4 @@
+import { SubMenuType } from '@/constants/editor'
 import useAppContext from '@/hooks/useAppContext'
 import { useEditorContext } from '@scenify/sdk'
 import { styled } from 'baseui'
@@ -16,13 +17,14 @@ function PanelsList() {
   const { activeObject } = useEditorContext()
 
   useEffect(() => {
-    if (!activeObject) {
-      setActiveSubMenu(null)
-    }
+    setActiveSubMenu(null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeObject])
 
-  const Component = activeObject && activeSubMenu ? PanelItems[activeSubMenu] : PanelItems[activePanel]
+  const Component =
+    (activeObject && activeSubMenu) || (!activeObject && activeSubMenu === SubMenuType.COLOR)
+      ? PanelItems[activeSubMenu]
+      : PanelItems[activePanel]
 
   return <Container>{Component && <Component />}</Container>
 }

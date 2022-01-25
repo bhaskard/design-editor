@@ -10,8 +10,8 @@ function Illustrations() {
   const [search, setSearch] = useState('')
   const [objects, setObjects] = useState<any[]>([])
   const [value] = useDebounce(search, 1000)
-  const editor = useEditor()
 
+  const editor = useEditor()
   useEffect(() => {
     getImages('people')
       .then((data: any) => setObjects(data))

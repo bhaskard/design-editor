@@ -2,13 +2,14 @@ import { Input } from 'baseui/input'
 import Icons from '@components/icons'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { useState } from 'react'
-import useAppContext from '@/hooks/useAppContext'
 import { useEditor } from '@scenify/sdk'
+import { useSelector } from 'react-redux'
+import { selectElements } from '@/store/slices/elements/selectors'
 
 function Panel() {
-  const editor = useEditor()
   const [value, setValue] = useState('')
-  const { shapes } = useAppContext()
+  const elements = useSelector(selectElements)
+  const editor = useEditor()
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <div style={{ padding: '2rem 2rem' }}>
@@ -23,24 +24,22 @@ function Panel() {
       <div style={{ flex: 1 }}>
         <Scrollbars>
           <div
-            style={{ display: 'grid', gap: '0.5rem', padding: '0 2rem 2rem', gridTemplateColumns: '1fr 1fr' }}
+            style={{ display: 'grid', gap: '1.5rem', padding: '0 2rem 2rem', gridTemplateColumns: '1fr 1fr' }}
           >
-            {shapes.map(shape => (
+            {elements.map(element => (
               <div
-                key={shape.id}
+                key={element.id}
                 style={{
                   alignItems: 'center',
                   cursor: 'pointer',
-                  padding: '10px',
-                  // background: 'red',
                   display: 'flex',
                   justifyContent: 'center',
                 }}
-                onClick={() => editor.add(shape)}
+                onClick={() => editor.add(element)}
               >
                 <img
-                  width="80px"
-                  src={shape.metadata.preview || 'https://via.placeholder.com/150'}
+                  style={{ margin: 'auto', transform: 'scale(0.9, 0.9)' }}
+                  src={element.metadata.preview || 'https://via.placeholder.com/150'}
                   alt="preview"
                   height="80px"
                 />

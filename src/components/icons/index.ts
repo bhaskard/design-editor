@@ -5,6 +5,10 @@ import Templates from './Templates'
 import Search from './Search'
 import Images from './Images'
 import Illustrations from './Illustrations'
+import Pixabay from './Pixabay'
+import Uploads from './Uploads'
+import Logo from './Logo'
+
 class Icons {
   static Background = Background
   static Elements = Elements
@@ -13,6 +17,9 @@ class Icons {
   static Search = Search
   static Images = Images
   static Illustrations = Illustrations
+  static Pixabay = Pixabay
+  static Uploads = Uploads
+  static Logo = Logo
 }
 
 export default Icons

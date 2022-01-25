@@ -1,14 +1,56 @@
-import useAppContext from '@/hooks/useAppContext'
 import { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
 import { useEditor } from '@scenify/sdk'
+import { useSelector } from 'react-redux'
+import { selectTemplates } from '@/store/slices/templates/selectors'
 
 function Templates() {
-  const editor = useEditor()
-  const { templates } = useAppContext()
+  const templates = useSelector(selectTemplates)
   const [value, setValue] = useState('')
+  const editor = useEditor()
+
+  const handleLoadTemplate = async template => {
+    console.log('LOAD TEMPLATE')
+    const fonts = []
+    template.objects.forEach(object => {
+      if (object.type === 'StaticText' || object.type === 'DynamicText') {
+        fonts.push({
+          name: object.metadata.fontFamily,
+          url: object.metadata.fontURL,
+          options: { style: 'normal', weight: 400 },
+        })
+      }
+    })
+    const filteredFonts = fonts.filter(f => !!f.url)
+    if (filteredFonts.length > 0) {
+      await loadFonts(filteredFonts)
+    }
+    editor.importFromJSON(template)
+  }
+
+  const loadFonts = fonts => {
+    const promisesList = fonts.map(font => {
+      // @ts-ignore
+      return new FontFace(font.name, `url(${font.url})`, font.options).load().catch(err => err)
+    })
+    return new Promise((resolve, reject) => {
+      Promise.all(promisesList)
+        .then(res => {
+          res.forEach(uniqueFont => {
+            // @ts-ignore
+            if (uniqueFont && uniqueFont.family) {
+              // @ts-ignore
+              document.fonts.add(uniqueFont)
+              resolve(true)
+            }
+          })
+        })
+        .catch(err => reject(err))
+    })
+  }
+
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <div style={{ padding: '2rem 2rem' }}>
@@ -34,9 +76,9 @@ function Templates() {
                   border: '1px solid rgba(0,0,0,0.2)',
                   padding: '5px',
                 }}
-                onClick={() => editor.importFromJSON(template)}
+                onClick={() => handleLoadTemplate(template)}
               >
-                <img width="100%" src={template.preview || 'https://via.placeholder.com/150'} alt="preview" />
+                <img width="100%" src={`${template.preview}?tr=w-320`} alt="preview" />
               </div>
             ))}
           </div>

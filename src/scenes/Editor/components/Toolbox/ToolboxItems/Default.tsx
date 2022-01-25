@@ -1,10 +1,10 @@
 import Icons from '../../Icons'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import useAppContext from '@/hooks/useAppContext'
-import { PanelType } from '@/constants/app-options'
+import { SubMenuType } from '@/constants/editor'
 
 function Default() {
-  const { setActivePanel } = useAppContext()
+  const { setActiveSubMenu } = useAppContext()
   return (
     <div
       style={{
@@ -16,7 +16,7 @@ function Default() {
       }}
     >
       <Button
-        onClick={() => setActivePanel(PanelType.BACKGROUND)}
+        onClick={() => setActiveSubMenu(SubMenuType.COLOR)}
         size={SIZE.compact}
         kind={KIND.tertiary}
         shape={SHAPE.square}

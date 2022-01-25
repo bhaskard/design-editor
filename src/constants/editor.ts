@@ -5,6 +5,7 @@ export enum SubMenuType {
   FONT_FAMILY = 'FontFamily',
   BACKGROUND = 'Background',
   COLOR = 'Color',
+  ANIMATIONS = 'Animations',
 }
 
 export const editorFonts = [
@@ -33,5 +34,44 @@ export const editorFonts = [
     name: 'Open Sans',
     preview:
       'https://font-public.canva.com/YAD7QhG2T6o/0/thumbnail4397746033903160930.50a02b6e1eabffa186ed7d1592726fe7.png',
+  },
+]
+
+export const gradients = [
+  {
+    angle: 0,
+    colors: ['#00c3ff', '#ffff1c'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#8e2de2', '#4a00e0'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#c0392b', '#8e44ad'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#ff00cc', '#333399'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#ff4b1f', '#1fddff'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#6a3093', '#a044ff'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#fc00ff', '#00dbde'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#ff0084', '#33001b'], //linear-gradient(to right, #00c3ff, #ffff1c)
+  },
+  {
+    angle: 0,
+    colors: ['#43cea2', '#185a9d'], //linear-gradient(to right, #00c3ff, #ffff1c)
   },
 ]

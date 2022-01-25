@@ -26,6 +26,7 @@ import Redo from './Redo'
 import ChevronLeft from './ChevronLeft'
 import Spacing from './Spacing'
 import CopyStyle from './CopyStyle'
+import TimeFast from './TimeFast'
 
 class Icons {
   static Background = Background
@@ -56,6 +57,7 @@ class Icons {
   static ChevronLeft = ChevronLeft
   static Spacing = Spacing
   static CopyStyle = CopyStyle
+  static TimeFast = TimeFast
 }
 
 export default Icons

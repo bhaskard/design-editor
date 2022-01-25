@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Input } from 'baseui/input'
 import Icons from '@components/icons'
-import { useEditor } from '@scenify/sdk'
+import { useActiveObject, useEditor } from '@scenify/sdk'
 import { HexColorPicker } from 'react-colorful'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Plus } from 'baseui/icon'
 import throttle from 'lodash/throttle'
+import { gradients } from '@/constants/editor'
 
 const colors = [
   '#f19066',
@@ -21,12 +22,26 @@ const colors = [
   '#303952',
 ]
 function Color() {
-  const editor = useEditor()
   const [color, setColor] = useState('#b32aa9')
   const [value, setValue] = useState('')
+  const editor = useEditor()
+  const activeObject = useActiveObject()
 
   const updateObjectFill = throttle((color: string) => {
-    editor.update({ fill: color })
+    if (activeObject) {
+      editor.update({ fill: color })
+    } else {
+      editor.background.setBackgroundColor(color)
+    }
+    setColor(color)
+  }, 100)
+
+  const updateObjectGradient = throttle((gradient: any) => {
+    if (activeObject) {
+      editor.setGradient(gradient)
+    } else {
+      editor.background.setGradient(gradient)
+    }
     setColor(color)
   }, 100)
 
@@ -103,7 +118,7 @@ function Color() {
             </StatefulPopover>
           </div>
           <div style={{ padding: '0 2rem 0' }}>
-            <div style={{ cursor: 'default', padding: '0.5rem 0', fontSize: '0.96rem' }}>Default colors</div>
+            <div style={{ cursor: 'default', padding: '0.5rem 0', fontSize: '0.96rem' }}>Basic</div>
           </div>
 
           <div
@@ -116,9 +131,35 @@ function Color() {
           >
             {colors.map(color => (
               <div
-                onClick={() => editor.update({ fill: color })}
+                onClick={() => updateObjectFill(color)}
                 key={color}
                 style={{ height: '42px', background: color, borderRadius: '4px', cursor: 'pointer' }}
+              ></div>
+            ))}
+          </div>
+
+          <div style={{ padding: '0 2rem 0' }}>
+            <div style={{ cursor: 'default', padding: '0.5rem 0', fontSize: '0.96rem' }}>Gradient</div>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gap: '0.5rem',
+              padding: '0 2rem 2rem',
+              gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
+            }}
+          >
+            {gradients.map((gradient, index) => (
+              <div
+                onClick={() => updateObjectGradient(gradient)}
+                key={index}
+                style={{
+                  height: '42px',
+                  background: `linear-gradient(to right, ${gradient.colors[0]}, ${gradient.colors[1]})`,
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                }}
               ></div>
             ))}
           </div>

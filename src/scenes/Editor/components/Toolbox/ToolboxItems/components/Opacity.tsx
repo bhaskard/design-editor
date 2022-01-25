@@ -1,4 +1,5 @@
 import Icons from '../../../Icons'
+import { Input } from 'baseui/input'
 import { Button, SHAPE, KIND, SIZE } from 'baseui/button'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { Slider } from 'baseui/slider'
@@ -44,14 +45,16 @@ function Opacity() {
             width: '380px',
             background: '#ffffff',
             fontFamily: 'Uber Move Text',
+            padding: '1.5rem',
+            fontSize: '14px',
           }}
         >
           <div
             style={{
-              display: 'flex',
+              display: 'grid',
               flexDirection: 'row',
-              padding: '1.5rem 2rem',
               alignItems: 'center',
+              gridTemplateColumns: '100px 1fr 52px',
             }}
           >
             <div>Transparency</div>
@@ -62,8 +65,8 @@ function Opacity() {
                 TickBar: () => null,
                 Thumb: {
                   style: {
-                    height: '20px',
-                    width: '20px',
+                    height: '12px',
+                    width: '12px',
                   },
                 },
               }}
@@ -73,7 +76,34 @@ function Opacity() {
               value={value}
               onChange={({ value }) => updateOpacity(value)}
             />
-            <div>{Math.round(value[0])}</div>
+            <div>
+              <Input
+                overrides={{
+                  Input: {
+                    style: {
+                      backgroundColor: '#ffffff',
+                      textAlign: 'center',
+                    },
+                  },
+                  Root: {
+                    style: {
+                      borderBottomColor: 'rgba(0,0,0,0.45)',
+                      borderTopColor: 'rgba(0,0,0,0.45)',
+                      borderRightColor: 'rgba(0,0,0,0.45)',
+                      borderLeftColor: 'rgba(0,0,0,0.45)',
+                      borderTopWidth: '1px',
+                      borderBottomWidth: '1px',
+                      borderRightWidth: '1px',
+                      borderLeftWidth: '1px',
+                    },
+                  },
+                  InputContainer: {},
+                }}
+                size={SIZE.mini}
+                onChange={() => {}}
+                value={Math.round(value[0])}
+              />
+            </div>
           </div>
         </div>
       )}

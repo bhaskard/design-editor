@@ -1,14 +1,19 @@
 import { useStyletron } from 'baseui'
 import Icons from '@components/icons'
 import useAppContext from '@/hooks/useAppContext'
+import { useEditor } from '@scenify/sdk'
 
 function PanelListItem({ label, icon, activePanel }: any) {
   const { setActivePanel } = useAppContext()
+  const editor = useEditor()
   const [css, theme] = useStyletron()
   const Icon = Icons[icon]
   return (
     <div
-      onClick={() => setActivePanel(label)}
+      onClick={() => {
+        editor.deselect()
+        setActivePanel(label)
+      }}
       className={css({
         width: '84px',
         height: '80px',

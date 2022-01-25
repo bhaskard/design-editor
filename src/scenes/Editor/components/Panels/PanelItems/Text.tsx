@@ -6,30 +6,32 @@ import { useState } from 'react'
 
 function Panel() {
   const [value, setValue] = useState('')
+
   const editor = useEditor()
 
-  const addHeading = () => {
+  const addStaticText = () => {
     const options = {
       type: 'StaticText',
-      width: 800,
+      width: 320,
       metadata: {
-        fontWeight: 700,
-        fontFamily: 'Lexend',
+        text: 'Add static text',
+        fontSize: 32,
+        fontWeight: 500,
+        fontFamily: 'Amiko',
         textAlign: 'center',
-        fontSize: 80,
-        value: 'Add a heading',
+        fontURL: 'https://fonts.gstatic.com/s/amiko/v5/WwkQxPq1DFK04tqlc17MMZgJ.ttf',
       },
     }
     editor.add(options)
   }
 
-  const addSubheading = () => {
+  const addDynamicText = () => {
     const options = {
-      type: 'StaticText',
-      width: 800,
+      type: 'DynamicText',
+      width: 320,
       metadata: {
-        value: 'Add a subheading',
-        fontSize: 60,
+        text: 'Add dynamic text',
+        fontSize: 32,
         fontWeight: 500,
         fontFamily: 'Lexend',
         textAlign: 'center',
@@ -38,20 +40,6 @@ function Panel() {
     editor.add(options)
   }
 
-  const addTextBody = () => {
-    const options = {
-      type: 'StaticText',
-      width: 800,
-      metadata: {
-        value: 'Add a little bit of body text',
-        fontSize: 40,
-        fontWeight: 300,
-        fontFamily: 'Lexend',
-        textAlign: 'center',
-      },
-    }
-    editor.add(options)
-  }
   return (
     <div style={{ display: 'flex', height: '100%', flexDirection: 'column' }}>
       <div style={{ padding: '2rem 2rem' }}>
@@ -77,43 +65,27 @@ function Panel() {
               style={{
                 display: 'flex',
                 paddingLeft: '1rem',
-                fontSize: '1.66rem',
+                fontSize: '1rem',
                 alignItems: 'center',
                 background: 'rgba(0,0,0,0.045)',
-                fontWeight: 700,
                 cursor: 'pointer',
               }}
-              onClick={addHeading}
+              onClick={addStaticText}
             >
-              Add a heading
+              Add static text
             </div>
             <div
               style={{
                 display: 'flex',
                 paddingLeft: '1rem',
-                fontSize: '1.12rem',
+                fontSize: '1rem',
                 alignItems: 'center',
                 background: 'rgba(0,0,0,0.045)',
-                fontWeight: 500,
                 cursor: 'pointer',
               }}
-              onClick={addSubheading}
+              onClick={addDynamicText}
             >
-              Add a subheading
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                paddingLeft: '1rem',
-                fontSize: '0.76rem',
-                alignItems: 'center',
-                background: 'rgba(0,0,0,0.045)',
-                fontWeight: 300,
-                cursor: 'pointer',
-              }}
-              onClick={addTextBody}
-            >
-              Add a litle bit of body text
+              Add dynamic text
             </div>
           </div>
         </Scrollbars>

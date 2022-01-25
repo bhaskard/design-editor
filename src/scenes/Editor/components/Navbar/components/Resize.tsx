@@ -5,7 +5,7 @@ import { Input } from 'baseui/input'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { useEffect, useState } from 'react'
 import formatSizes from '@/constants/format-sizes'
-import { useEditor, useEditorContext } from '@scenify/sdk'
+import { useEditorContext, useEditor } from '@scenify/sdk'
 
 const getLabel = ({ option }: any) => {
   return (
@@ -25,20 +25,19 @@ const Container = styled('div', props => ({
 }))
 
 export default function Resize() {
-  const editor = useEditor()
   const [value, setValue] = useState<Value>([])
   const [customSize, setCustomSize] = useState({ width: 0, height: 0 })
   const { frameSize } = useEditorContext() as any
 
+  const editor = useEditor()
   const updateFormatSize = value => {
     setValue(value)
     const [frame] = value
-
     editor.frame.setSize(frame.size)
   }
   const applyCustomSize = () => {
     if (customSize.width && customSize.height) {
-      editor.frame.setSize(customSize)
+      editor.frame.update(customSize)
     }
   }
   useEffect(() => {

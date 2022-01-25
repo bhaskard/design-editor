@@ -7,7 +7,10 @@ import { useEffect, useState } from 'react'
 import { useActiveObject, useEditor } from '@scenify/sdk'
 import { StatefulPopover, PLACEMENT } from 'baseui/popover'
 import { StatefulMenu } from 'baseui/menu'
+import Spacing from './components/Spacing'
 import Common from './components/Common'
+import Animate from './components/Animate'
+
 interface TextOptions {
   fontFamily: string
   fontSize: number
@@ -55,14 +58,18 @@ function Text() {
   }, [activeObject])
 
   useEffect(() => {
-    editor.on('history:changed', () => {
+    const handleChanges = () => {
       updateOptions(activeObject)
-    })
+    }
+    editor.on('history:changed', handleChanges)
+    return () => {
+      editor.off('history:changed', handleChanges)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor])
 
   const updateOptions = (object: fabric.TextOptions) => {
-    const textOptions = {
+    const textOptions = ({
       fontFamily: object.fontFamily,
       fontSize: object.fontSize,
       fontWeight: object.fontWeight,
@@ -71,7 +78,7 @@ function Text() {
       textAligh: object.textAlign,
       underline: object.underline,
       fill: object.fill,
-    } as unknown as TextOptions
+    } as unknown) as TextOptions
     setOptions(textOptions)
   }
 
@@ -99,7 +106,7 @@ function Text() {
   }
 
   const getNextTextAlign = (current: string) => {
-    const positions = ['left', 'center', 'right', 'justify', 'left']
+    const positions = ['left', 'center', 'right', 'left']
     const currentIndex = positions.findIndex(v => v === current)
     const nextAlign = positions[currentIndex + 1]
     return nextAlign
@@ -208,7 +215,7 @@ function Text() {
             size={SIZE.mini}
             endEnhancer={() => <ChevronDown size={24} />}
           >
-            {activeObject.fontSize}
+            {Math.round(activeObject.fontSize)}
           </Button>
         </StatefulPopover>
 
@@ -254,9 +261,17 @@ function Text() {
           >
             <Icons.Underline size={24} />
           </Button>
+          <div
+            style={{ height: '30px', width: '1px', backgroundColor: 'rgba(0,0,0,0.1)', margin: '0 0.35rem' }}
+          />
           <Button onClick={toggleTextAlign} size={SIZE.compact} kind={KIND.tertiary} shape={SHAPE.square}>
             <TextAlignIcon size={24} />
           </Button>
+          <div
+            style={{ height: '30px', width: '1px', backgroundColor: 'rgba(0,0,0,0.1)', margin: '0 0.35rem' }}
+          />
+          <Spacing />
+          <Animate />
         </div>
       </div>
       <Common />

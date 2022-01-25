@@ -3,12 +3,16 @@ import ResizeObserver from 'resize-observer-polyfill'
 import useAppContext from '@hooks/useAppContext'
 import Loading from './components/Loading'
 import { editorFonts } from './constants/fonts'
+import { useAppDispatch } from './store/store'
+import { getTemplates } from './store/slices/templates/actions'
+import { getUploads } from './store/slices/uploads/actions'
+import { getCreations } from './store/slices/creations/actions'
 
 function Container({ children }) {
   const containerRef = useRef<HTMLDivElement>()
   const { isMobile, setIsMobile } = useAppContext()
   const [loaded, setLoaded] = useState(false)
-
+  const dispatch = useAppDispatch()
   const updateMediaQuery = (value: number) => {
     if (!isMobile && value >= 800) {
       setIsMobile(false)
@@ -39,7 +43,7 @@ function Container({ children }) {
     loadFonts()
     setTimeout(() => {
       setLoaded(true)
-    }, 10)
+    }, 1000)
   }, [])
 
   const loadFonts = () => {
@@ -57,6 +61,13 @@ function Container({ children }) {
       })
       .catch(err => console.log({ err }))
   }
+
+  useEffect(() => {
+    dispatch(getTemplates())
+    dispatch(getUploads())
+    dispatch(getCreations())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div
