@@ -13,7 +13,7 @@ Design editor using React and FabricJS. Create images in React, draw diagrams an
 - [x] Zoom/pan canvas
 - [x] Save and Download design
 - [x] Context menu
-- [ ] Animation support, with Fade / Bounce / Shake / Scaling / Rotation / Flash effects
+- [x] Animation support, with Fade / Bounce / Shake / Scaling / Rotation / Flash effects
 - [x] Interation modes: selection, ctrl + drag grab
 - [x] Undo/Redo support
 - [x] Guidelines support
